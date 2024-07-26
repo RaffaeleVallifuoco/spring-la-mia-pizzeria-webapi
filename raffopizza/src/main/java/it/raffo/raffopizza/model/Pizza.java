@@ -2,6 +2,9 @@ package it.raffo.raffopizza.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,6 +41,10 @@ public class Pizza {
     private Double price;
 
     @OneToMany(mappedBy = "pizza")
+    // AGGIUNTO DOPO RICERCA SU DOCUMENTAZIONE. PERO' PERDO INFORMAZIONI SU OFFERTE
+    // COLLEGATE
+    // @JsonIgnore
+    @JsonManagedReference
     private List<Sale> sale;
 
     // --------------------------------------------

@@ -11,4 +11,7 @@ public interface PizzaService {
 
     public List<Pizza> findAll();
 
+    public Pizza save(Pizza savePizza);
+
+    public Pizza update(Integer pizzaId, Pizza updatePizza);
 }

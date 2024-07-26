@@ -2,6 +2,8 @@ package it.raffo.raffopizza.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,7 +39,8 @@ public class Sale {
 
     @ManyToOne
     @JoinColumn(name = "pizza_id", nullable = false)
-    private Pizza pizza; 
+    @JsonBackReference
+    private Pizza pizza;
 
     public Integer getId() {
         return id;

@@ -30,4 +30,30 @@ public class PizzaServiceImpl implements PizzaService {
         return pizzaRepo.findAll();
     }
 
+    @Override
+    public Pizza save(Pizza pizza) {
+        // TODO Auto-generated method stub
+        return pizzaRepo.save(pizza);
+    }
+
+    @Override
+    public Pizza update(Integer pizzaId, Pizza inputPizza) {
+        // TODO Auto-generated method stub
+
+        Optional<Pizza> updatePizza = pizzaRepo.findById(pizzaId);
+
+        if (updatePizza.isEmpty()) {
+            throw new IllegalArgumentException("La pizza cercata con id " + pizzaId + " non esiste.");
+        }
+
+        Pizza pizza = updatePizza.get();
+        pizza.setName(inputPizza.getName());
+        pizza.setDescription(inputPizza.getDescription());
+        pizza.setPrice(inputPizza.getPrice());
+        pizza.setPhoto(inputPizza.getPhoto());
+        // pizza.setSale(inputPizza.getSale());
+
+        return pizzaRepo.save(pizza);
+    }
+
 }
